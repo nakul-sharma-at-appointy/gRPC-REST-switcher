@@ -3,7 +3,7 @@ import API from "./class";
 async function run() {
   const api = new API("gRPC");
   const john = await api.createUser({
-    name: "Hello",
+    name: "Andy",
     age: 10,
     id: 10,
     status: "active",
