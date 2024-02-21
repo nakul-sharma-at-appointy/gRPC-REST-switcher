@@ -16,23 +16,5 @@
     "name": "Harry",
     "age": 22,
     "status": "In a meeting"
-  },
-  {
-    "id": 10,
-    "name": "Hello",
-    "age": 10,
-    "status": "active"
-  },
-  {
-    "id": 10,
-    "name": "Hello",
-    "age": 10,
-    "status": "active"
-  },
-  {
-    "id": 10,
-    "name": "Hello",
-    "age": 10,
-    "status": "active"
   }
 ]

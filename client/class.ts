@@ -42,15 +42,21 @@ class API {
     }
   }
 
-  public getUser(id: number) {
-    if (this.type === "gRPC") {
-      return this.getUserFromgRPC(id).then((res) => {
-        res.toString();
+  public async getUser(id: number) {
+    // if (this.type === "gRPC") {
+    //   return this.getUserFromgRPC(id).then((res) => {
+    //     res.toString();
 
+    //     return this.getUserFromgRPC(id).then((res) => res.toObject());
+    //   });
+    // } else {
+    //   return this.getUserFromREST(id);
+    // }
+    switch (this.type) {
+      case "gRPC":
         return this.getUserFromgRPC(id).then((res) => res.toObject());
-      });
-    } else {
-      return this.getUserFromREST(id);
+      default:
+        return this.getUserFromREST(id);
     }
   }
 
@@ -82,21 +88,35 @@ class API {
   }
 
   public async createUser(props: UserProps) {
-    if (this.type === "gRPC") {
-      return this.createUserFromgRPC(props).then((res) => res.toObject());
-    } else {
-      return this.createUserFromREST(props);
+    // if (this.type === "gRPC") {
+    //   return this.createUserFromgRPC(props).then((res) => res.toObject());
+    // } else {
+    //   return this.createUserFromREST(props);
+    // }
+    switch (this.type) {
+      case "gRPC":
+        return this.createUserFromgRPC(props).then((res) => res.toObject());
+      default:
+        return this.createUserFromREST(props);
     }
   }
 
   public async getAllUsers() {
-    if (this.type === "gRPC") {
-      return this.getAllUsersFromgRPC().then((res) => {
-        const convertedRes = res.map((user) => user.toObject());
-        return convertedRes;
-      });
-    } else {
-      return this.getAllUsersFromREST();
+    // if (this.type === "gRPC") {
+    //   return this.getAllUsersFromgRPC().then((res) => {
+    //     const convertedRes = res.map((user) => user.toObject());
+    //     return convertedRes;
+    //   });
+    // } else {
+    //   return this.getAllUsersFromREST();
+    // }
+    switch (this.type) {
+      case "gRPC":
+        return this.getAllUsersFromgRPC().then((res) =>
+          res.map((user) => user.toObject())
+        );
+      default:
+        return this.getAllUsersFromREST();
     }
   }
 
