@@ -1,5 +1,5 @@
 async function APIFactory(apiType: string) {
-  let path = `./users/${apiType}.ts`;
+  let path = `./apis/${apiType}.ts`;
   const getAPIMethods = await import(path);
 
   const api = getAPIMethods[apiType];
@@ -7,7 +7,6 @@ async function APIFactory(apiType: string) {
 }
 
 async function run() {
-  // const factory = new API
   const apiType = "REST";
   const api = await APIFactory(apiType);
 
