@@ -20,14 +20,14 @@ async function run() {
 
   const api = await APIAdapter(apiType);
 
-  const john = await api.createUser({
+  const andy = await api.createUser({
     name: "Andy",
     age: 10,
     id: 10,
     status: "active",
   });
 
-  console.log(`\nCreated user`, john);
+  console.log(`\nCreated user`, andy);
 
   const user = await api.getUser(1);
   console.log(user);
