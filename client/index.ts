@@ -1,7 +1,16 @@
-import API from "./class";
+async function APIFactory(apiType: string) {
+  let path = `./users/${apiType}.ts`;
+  const getAPIMethods = await import(path);
+
+  const api = getAPIMethods[apiType];
+  return api;
+}
 
 async function run() {
-  const api = new API("gRPC");
+  // const factory = new API
+  const apiType = "REST";
+  const api = await APIFactory(apiType);
+
   const john = await api.createUser({
     name: "Andy",
     age: 10,

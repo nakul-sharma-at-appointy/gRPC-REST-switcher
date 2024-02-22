@@ -88,11 +88,6 @@ class API {
   }
 
   public async createUser(props: UserProps) {
-    // if (this.type === "gRPC") {
-    //   return this.createUserFromgRPC(props).then((res) => res.toObject());
-    // } else {
-    //   return this.createUserFromREST(props);
-    // }
     switch (this.type) {
       case "gRPC":
         return this.createUserFromgRPC(props).then((res) => res.toObject());
@@ -102,14 +97,6 @@ class API {
   }
 
   public async getAllUsers() {
-    // if (this.type === "gRPC") {
-    //   return this.getAllUsersFromgRPC().then((res) => {
-    //     const convertedRes = res.map((user) => user.toObject());
-    //     return convertedRes;
-    //   });
-    // } else {
-    //   return this.getAllUsersFromREST();
-    // }
     switch (this.type) {
       case "gRPC":
         return this.getAllUsersFromgRPC().then((res) =>
