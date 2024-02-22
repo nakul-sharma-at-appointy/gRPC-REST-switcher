@@ -1,14 +1,24 @@
-async function APIFactory(apiType: string) {
-  let path = `./apis/${apiType}.ts`;
-  const getAPIMethods = await import(path);
+interface ApiAdapter {
+  createUser(userData: any): Promise<any>;
+  getUser(userId: number): Promise<any>;
+  getAllUsers(): Promise<any[]>;
+}
 
+const apiAdapters: { [apiType: string]: ApiAdapter } = {};
+async function APIAdapter(apiType: string) {
+  const path = `./apis/${apiType}.ts`;
+  const getAPIMethods = await import(path);
   const api = getAPIMethods[apiType];
-  return api;
+
+  apiAdapters[apiType] = { ...api };
+
+  return apiAdapters[apiType];
 }
 
 async function run() {
-  const apiType = "REST";
-  const api = await APIFactory(apiType);
+  const apiType = "gRPC";
+
+  const api = await APIAdapter(apiType);
 
   const john = await api.createUser({
     name: "Andy",
