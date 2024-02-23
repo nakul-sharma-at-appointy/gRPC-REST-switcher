@@ -1,7 +1,7 @@
 import { Empty } from "google-protobuf/google/protobuf/empty_pb";
-import { User, UserRequest } from "../../proto/users_pb";
-import { client } from "../utils";
-import { noop } from "../utils";
+import { User, UserRequest } from "../../../proto/users_pb";
+import { client } from "../../utils";
+import { noop } from "../../utils";
 
 interface UserProps {
   id: number;

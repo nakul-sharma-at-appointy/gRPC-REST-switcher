@@ -6,7 +6,7 @@ interface ApiAdapter {
 
 const apiAdapters: { [apiType: string]: ApiAdapter } = {};
 async function APIAdapter(apiType: string) {
-  const path = `./apis/${apiType}.ts`;
+  const path = `./apis/user/${apiType}.ts`;
   const getAPIMethods = await import(path);
   const api = getAPIMethods[apiType];
 
